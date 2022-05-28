@@ -1,5 +1,9 @@
-*
 !.gitignore
-!*.cs
-!*.csproj
-!*.sln
+*.cache
+*.dll
+*.exe
+*.json
+*.pdb
+*.txt
+bin/*
+obj/*
