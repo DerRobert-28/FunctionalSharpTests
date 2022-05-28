@@ -1,11 +1,4 @@
-*.dll
-*.exe
-*.log
-*.suo
-*.txt
-*.vs/*
-*/bin/*
-*/obj/*
-.vs/*
-bin/*
-obj/*
+*
+!.gitignore
+!*.cs
+!*.sln
