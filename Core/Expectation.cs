@@ -24,19 +24,19 @@
 		//	ASSERTIONS / EXPECTATIONS:
 		//
 
-		public Expectation anyExceptionIsThrown(string? message = null) {
+		public Expectation anyExceptionIsThrown(string? message) {
 			testClass.testMethod();
 			testClass.assertNotNull(world.lastException, message);
 			return this;
 		}
 
-		public Expectation exceptionReasonEqualTo(string reason, string? message = null) {
+		public Expectation exceptionReasonEqualTo(string reason, string? message) {
 			testClass.testMethod();
 			testClass.assertEquals(world.lastException?.Message, reason, message);
 			return this;
 		}
 
-		public Expectation genericExceptionTypeEqualTo(Type type, string? message = null) {
+		public Expectation genericExceptionTypeEqualTo(Type type, string? message) {
 			testClass.testMethod();
 			//
 			Type? baseType = type.BaseType;
@@ -59,7 +59,7 @@
 			return this;
 		}
 		
-		public Expectation exceptionTypeIsNotNull(string? message = null) {
+		public Expectation exceptionTypeIsNotNull(string? message) {
 			testClass.testMethod();
 			testClass.assertNotNull(world.lastException, message);
 			testClass.assertNotEquals(
