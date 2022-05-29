@@ -1,4 +1,4 @@
-namespace DerRobert.FunctionalSharpTests.Exceptions {
+namespace DerRobert.FunctionalSharpTests.Tests.Exceptions {
 
 	using DerRobert.FunctionalSharpTests.Core;
 	using System;
