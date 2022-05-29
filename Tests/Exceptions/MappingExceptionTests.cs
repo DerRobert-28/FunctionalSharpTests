@@ -7,12 +7,14 @@ namespace DerRobert.FunctionalSharpTests.Tests.Exceptions {
 	[TestClass]
 	public class MappingExceptionTests: Exceptions {
 
-		[TestMethod("Test of throwing a 'MappingException'")]
+		private const string reason = "Test Automation: MappingException";
+
+		[TestMethod]
 		public void testMappingException() {
-			testMethod("Test of throwing a 'MappingException'");
-			arrangeException(new MappingException("throwing MappingException"));
+			testMethod(reason);
+			arrangeException(MappingException.because(reason));
 			actException();
-			assertException();
+			//assertException();
 		}
 		
 	}
