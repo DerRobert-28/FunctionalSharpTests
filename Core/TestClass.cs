@@ -5,37 +5,43 @@ namespace DerRobert.FunctionalSharpTests.Core {
 	using System.Diagnostics;
 	using System.IO;
 	using System.Text;
-
+	using System.Threading;
 	using static System.IO.Directory;
 	
 
 	public abstract class TestClass {
 
-		private static bool openLogFileAfterTesting = true;
-		private static bool openContainingFolderAfterTesting = false;
+		private static bool openLastLogFileAfterTesting = false;
+		private static bool openContainingFolderAfterTesting = true;
 		private static int testStep = 0;
 		
 		private FileStream? logFile;
-		private string? testPath;
-
+		private static string? testPath;
+		
 
 		[TestInitialize]
 		public void before() {
+			Thread.Sleep(1);	//	patch for logfile
 			string fileName = $"log-{getTimeStamp()}.txt";
 			testPath = getPath();
-			CreateDirectory(testPath);
-			logFile = File.Open($"{testPath}\\{fileName}", FileMode.Append, FileAccess.Write);
+			try {
+				CreateDirectory(testPath);
+			} catch {}
+			try {
+				if(logFile == null) {
+					logFile = File.Open($"{testPath}\\{fileName}", FileMode.Append, FileAccess.Write);
+				}
+			} catch {}
 		}
-
 
 		[TestCleanup]
 		public void after() {
 			if(logFile != null) {
 				logFile.Close();
 				logFile.Dispose();
-				if(openLogFileAfterTesting) {
+				if(openLastLogFileAfterTesting) {
 					Process.Start("notepad.exe" , logFile.Name);
-					openLogFileAfterTesting = false;
+					openLastLogFileAfterTesting = false;
 				}
 			}
 			if(openContainingFolderAfterTesting && testPath != null) {
