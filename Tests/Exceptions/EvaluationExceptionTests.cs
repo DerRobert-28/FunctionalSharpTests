@@ -67,7 +67,7 @@ namespace DerRobert.FunctionalSharpTests.Tests.Exceptions {
 
 
 		[TestMethod]
-		public void test_ExceptionMessage_shouldBeCorrect() {
+		public void test_ExceptionReason_shouldBeCorrect() {
 			testMethod(reason);
 
 			Arrange
@@ -87,7 +87,7 @@ namespace DerRobert.FunctionalSharpTests.Tests.Exceptions {
 				.withLogging(this)
 				.That
 					.anyExceptionIsThrown("Expected exception has not been thrown.")
-					.exceptionReasonEqualTo(reason);
+					.exceptionReasonEqualTo(reason, $"Exception reason should be \"{reason}\".");
 		}
 
 	}
