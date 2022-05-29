@@ -1,4 +1,4 @@
-﻿namespace DerRobert.FunctionalSharpTests.Tests.Interfaces {
+﻿namespace DerRobert.FunctionalSharpTests.Tests.Types.Tuples {
 
 	using DerRobert.FunctionalSharp.Types.Tuples;
 	using DerRobert.FunctionalSharpTests.Core;
