@@ -36,6 +36,29 @@
 			return this;
 		}
 
+		public Expectation genericExceptionTypeEqualTo(Type type, string? message = null) {
+			testClass.testMethod();
+			//
+			Type? baseType = type.BaseType;
+			testClass.assertNotNull(baseType, "Exception type should be inherited.");
+			//
+			Exception? lastException = world.lastException;
+			testClass.assertNotNull(lastException, "No exception has been thrown.");
+			//
+			Type? lastExceptionType = lastException?.GetType();
+			testClass.assertEquals(baseType, lastExceptionType, $"Base type should be {baseType?.Name}.");
+			//
+			Type? exceptionType = lastException?.GetType();
+			Type[]? genericTypes = exceptionType?.GenericTypeArguments;
+			testClass.assertNotNull(genericTypes, "Exception type should be generic.");
+			testClass.assertEquals(genericTypes?.Length, 1, "Exception type should be generic.");
+			//
+			Type? theType = genericTypes?[0];
+			testClass.assertEquals(theType, type, message);
+			//
+			return this;
+		}
+		
 		public Expectation exceptionTypeIsNotNull(string? message = null) {
 			testClass.testMethod();
 			testClass.assertNotNull(world.lastException, message);

@@ -1,5 +1,5 @@
 namespace DerRobert.FunctionalSharpTests.Core {
-	
+
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using System;
 	using System.Diagnostics;
@@ -18,6 +18,7 @@ namespace DerRobert.FunctionalSharpTests.Core {
 		private FileStream? logFile;
 		private string? testPath;
 
+
 		[TestInitialize]
 		public void before() {
 			string fileName = $"log-{getTimeStamp()}.txt";
@@ -25,6 +26,7 @@ namespace DerRobert.FunctionalSharpTests.Core {
 			CreateDirectory(testPath);
 			logFile = File.Open($"{testPath}\\{fileName}", FileMode.Append, FileAccess.Write);
 		}
+
 
 		[TestCleanup]
 		public void after() {
@@ -41,7 +43,11 @@ namespace DerRobert.FunctionalSharpTests.Core {
 				openContainingFolderAfterTesting = false;
 			}
 		}
-
+		
+		//
+		//	ASSERTIONS:
+		//
+		
 		public void assertEquals<T, U>(T expected, U actual, string? message) {
 			try {
 				Assert.AreEqual(expected, actual, message);
@@ -78,14 +84,9 @@ namespace DerRobert.FunctionalSharpTests.Core {
 			}
 		}
 
-		public void testMethod(string? info = null) {
-			string? caller = new StackTrace()?.GetFrame(1)?.GetMethod()?.Name;
-			if(info == null) {
-				testLog($"[{caller}]");
-			} else {
-				testLog($"[{caller}] {info}");
-			}
-		}
+		//
+		//	LOGGING:
+		//
 
 		public void testLog(string? log = null) {
 			if(log != null) {
@@ -94,6 +95,19 @@ namespace DerRobert.FunctionalSharpTests.Core {
 				logFile?.Write(info, 0, info.Length);
 			}
 		}
+
+		public void testMethod(string? info = null) {
+			string? caller = new StackTrace()?.GetFrame(1)?.GetMethod()?.Name;
+			if(info == null) {
+				testLog($"[{caller}]");
+			} else {
+				testLog($"[{caller}] {info}");
+			}
+		}
+		
+		//
+		//	PRIVATE METHODS:
+		//
 
 		private string getPath() => $"{GetCurrentDirectory()}\\[TESTS]";
 
