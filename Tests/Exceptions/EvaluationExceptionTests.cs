@@ -1,4 +1,4 @@
-namespace DerRobert.FunctionalSharpTests.Exceptions {
+namespace DerRobert.FunctionalSharpTests.Tests.Exceptions {
 
 	using DerRobert.FunctionalSharp.Exceptions;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;

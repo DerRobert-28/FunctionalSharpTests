@@ -1,4 +1,4 @@
-namespace DerRobert.FunctionalSharpTests.Exceptions {
+namespace DerRobert.FunctionalSharpTests.Tests.Exceptions {
 
 	using DerRobert.FunctionalSharp.Exceptions;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,6 +10,9 @@ namespace DerRobert.FunctionalSharpTests.Exceptions {
 		[TestMethod("Test of throwing a 'MappingException'")]
 		public void testMappingException() {
 			testMethod("Test of throwing a 'MappingException'");
+			arrangeException(new MappingException("throwing MappingException"));
+			actException();
+			assertException();
 		}
 		
 	}
