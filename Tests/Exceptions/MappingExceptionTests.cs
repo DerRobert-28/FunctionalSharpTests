@@ -34,8 +34,8 @@ namespace DerRobert.FunctionalSharpTests.Tests.Exceptions {
 				.forWorld(mappingWorld)
 				.withLogging(this)
 				.That
-					.anyExceptionIsThrown("Expected exception has not been thrown.")
-					.exceptionTypeIsNotNull("No exception type has been defined.");
+					.AnyExceptionIsThrown("Expected exception has not been thrown.")
+					.ExceptionTypeIsNotNull("No exception type has been defined.");
 		}
 
 
@@ -59,8 +59,8 @@ namespace DerRobert.FunctionalSharpTests.Tests.Exceptions {
 				.forWorld(mappingWorld)
 				.withLogging(this)
 				.That
-					.anyExceptionIsThrown("Expected exception has not been thrown.")
-					.genericExceptionTypeEqualTo(
+					.AnyExceptionIsThrown("Expected exception has not been thrown.")
+					.GenericExceptionTypeEqualTo(
 						typeof(MappingException),
 						"Exception type should be 'MappingException'.");
 		}
@@ -86,8 +86,8 @@ namespace DerRobert.FunctionalSharpTests.Tests.Exceptions {
 				.forWorld(mappingWorld)
 				.withLogging(this)
 				.That
-					.anyExceptionIsThrown("Expected exception has not been thrown.")
-					.exceptionReasonEqualTo(reason, $"Exception reason should be \"{reason}\".");
+					.AnyExceptionIsThrown("Expected exception has not been thrown.")
+					.ExceptionReasonIsEqualTo(reason, $"Exception reason should be \"{reason}\".");
 		}
 		
 	}

@@ -34,6 +34,7 @@ namespace DerRobert.FunctionalSharpTests.Core {
 			} catch {}
 		}
 
+
 		[TestCleanup]
 		public void after() {
 			if(logFile != null) {
@@ -115,7 +116,7 @@ namespace DerRobert.FunctionalSharpTests.Core {
 		//	PRIVATE METHODS:
 		//
 
-		private string getPath() => $"{GetCurrentDirectory()}\\[TESTS]";
+		private string getPath() => $"{GetCurrentDirectory()}\\..\\TestResults";
 
 		private string getTestStep() {
 			testStep += 10001;

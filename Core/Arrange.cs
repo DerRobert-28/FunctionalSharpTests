@@ -1,5 +1,5 @@
 ﻿namespace DerRobert.FunctionalSharpTests.Core {
-
+	using DerRobert.FunctionalSharp.Interfaces;
 	using System;
 
 
@@ -33,6 +33,12 @@
 		public Arrange withReason(string reason) {
 			testClass.testMethod($"\"{reason}\"");
 			world.reason = reason;
+			return this;
+		}
+
+		public Arrange withTuple(ITuple tuple) {
+			testClass.testMethod($"{tuple}");
+			world.tuple = tuple;
 			return this;
 		}
 

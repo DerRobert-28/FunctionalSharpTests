@@ -1,5 +1,5 @@
 ﻿namespace DerRobert.FunctionalSharpTests.Core {
-	
+	using DerRobert.FunctionalSharp.Interfaces;
 	using System;
 
 
@@ -8,6 +8,9 @@
 		private TestClass testClass;
 		private readonly World world;
 
+		public Expectation and => this;
+		public Expectation the => this;
+		
 		//
 		//	INITIALISATION:
 		//
@@ -24,19 +27,69 @@
 		//	ASSERTIONS / EXPECTATIONS:
 		//
 
-		public Expectation anyExceptionIsThrown(string? message) {
+		public Expectation AnyExceptionIsThrown(string? message) {
 			testClass.testMethod();
 			testClass.assertNotNull(world.lastException, message);
 			return this;
 		}
+		
+		public Expectation ArityIsEqualTo(int expected, string? message) {
+			testClass.testMethod();
+			testClass.assertEquals(expected, world.tuple?.arity(), $"Arity should be {expected}");
+			return this;
+		}
+	
+		public Expectation EighthTupleValueIsEqualTo<T>(T expected, string? message) {
+			testClass.testMethod();
+			if(world?.tuple != null) {
+				dynamic actual = world.tuple;
+				testClass.assertEquals(expected, actual._8, $"Eighth tuple value should be {expected}");
+			}
+			return this;
+		}
 
-		public Expectation exceptionReasonEqualTo(string reason, string? message) {
+		public Expectation ExceptionReasonIsEqualTo(string reason, string? message) {
 			testClass.testMethod();
 			testClass.assertEquals(world.lastException?.Message, reason, message);
 			return this;
 		}
+		
+		public Expectation ExceptionTypeIsNotNull(string? message) {
+			testClass.testMethod();
+			testClass.assertNotNull(world.lastException, message);
+			testClass.assertNotEquals(
+				world.lastException?.GetType(), typeof(NullReferenceException), message);
+			return this;
+		}
 
-		public Expectation genericExceptionTypeEqualTo(Type type, string? message) {
+		public Expectation FifthTupleValueIsEqualTo<T>(T expected, string? message) {
+			testClass.testMethod();
+			if(world?.tuple != null) {
+				dynamic actual = world.tuple;
+				testClass.assertEquals(expected, actual._5, $"Fifth tuple value should be {expected}");
+			}
+			return this;
+		}
+
+		public Expectation FirstTupleValueIsEqualTo<T>(T expected, string? message) {
+			testClass.testMethod();
+			if(world?.tuple != null) {
+				dynamic actual = world.tuple;
+				testClass.assertEquals(expected, actual._1, $"First tuple value should be {expected}");
+			}
+			return this;
+		}
+
+		public Expectation FourthTupleValueIsEqualTo<T>(T expected, string? message) {
+			testClass.testMethod();
+			if(world?.tuple != null) {
+				dynamic actual = world.tuple;
+				testClass.assertEquals(expected, actual._4, $"Fourth tuple value should be {expected}");
+			}
+			return this;
+		}
+
+		public Expectation GenericExceptionTypeEqualTo(Type type, string? message) {
 			testClass.testMethod();
 			//
 			Type? baseType = type.BaseType;
@@ -58,12 +111,55 @@
 			//
 			return this;
 		}
-		
-		public Expectation exceptionTypeIsNotNull(string? message) {
+
+		public Expectation MaximumArityEqualTo(int expected, string? message) {
 			testClass.testMethod();
-			testClass.assertNotNull(world.lastException, message);
-			testClass.assertNotEquals(
-				world.lastException?.GetType(), typeof(NullReferenceException), message);
+			testClass.assertEquals(expected, world.tuple?.MAX_ARITY, $"MAX_ARITY should be {expected}");
+			return this;
+		}
+
+		public Expectation NinthTupleValueIsEqualTo<T>(T expected, string? message) {
+			testClass.testMethod();
+			if(world?.tuple != null) {
+				dynamic actual = world.tuple;
+				testClass.assertEquals(expected, actual._9, $"Ninth tuple value should be {expected}");
+			}
+			return this;
+		}
+
+		public Expectation SixthTupleValueIsEqualTo<T>(T expected, string? message) {
+			testClass.testMethod();
+			if(world?.tuple != null) {
+				dynamic actual = world.tuple;
+				testClass.assertEquals(expected, actual._6, $"Sixth tuple value should be {expected}");
+			}
+			return this;
+		}	
+
+		public Expectation SecondTupleValueIsEqualTo<T>(T expected, string? message) {
+			testClass.testMethod();
+			if(world?.tuple != null) {
+				dynamic actual = world.tuple;
+				testClass.assertEquals(expected, actual._2, $"Second tuple value should be {expected}");
+			}
+			return this;
+		}
+
+		public Expectation SeventhTupleValueIsEqualTo<T>(T expected, string? message) {
+			testClass.testMethod();
+			if(world?.tuple != null) {
+				dynamic actual = world.tuple;
+				testClass.assertEquals(expected, actual._7, $"Seventh tuple value should be {expected}");
+			}
+			return this;
+		}
+
+		public Expectation ThirdTupleValueIsEqualTo<T>(T expected, string? message) {
+			testClass.testMethod();
+			if(world?.tuple != null) {
+				dynamic actual = world.tuple;
+				testClass.assertEquals(expected, actual._3, $"Third tuple value should be {expected}");
+			}
 			return this;
 		}
 
