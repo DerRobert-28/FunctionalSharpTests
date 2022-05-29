@@ -10,6 +10,7 @@ namespace DerRobert.FunctionalSharpTests.Tests.Exceptions {
 		private Exception? actualException = null, expectedException = null;
 		private Type? expectedType = null;
 
+		
 		protected void arrangeException<T>(T exception) where T: Exception {
 			testMethod($"<{typeof(T).Name}>");
 			expectedReason = exception.Message;
@@ -56,13 +57,6 @@ namespace DerRobert.FunctionalSharpTests.Tests.Exceptions {
 				$"Message should be \"{expectedReason}\".");
 		}
 
-		protected void assertException() {
-			testMethod();
-			assertForAnyException();
-			assertForExceptionType();
-			assertForMessage();
-		}
-	
 	}
 
 }

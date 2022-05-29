@@ -1,5 +1,5 @@
 namespace DerRobert.FunctionalSharpTests.Core {
-
+	
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using System;
 	using System.Diagnostics;
@@ -9,18 +9,14 @@ namespace DerRobert.FunctionalSharpTests.Core {
 	using static System.IO.Directory;
 	
 
-	abstract public class TestClass {
+	public abstract class TestClass {
 
 		private static bool openLogFileAfterTesting = true;
 		private static bool openContainingFolderAfterTesting = false;
 		private static int testStep = 0;
-
+		
 		private FileStream? logFile;
 		private string? testPath;
-
-		//
-		//	PUBLIC METHODS:
-		//
 
 		[TestInitialize]
 		public void before() {
@@ -46,11 +42,7 @@ namespace DerRobert.FunctionalSharpTests.Core {
 			}
 		}
 
-		//
-		//	PROTECTED METHODS:
-		//
-
-		protected void assertEquals<T>(T expected, T actual, string? message) {
+		public void assertEquals<T, U>(T expected, U actual, string? message) {
 			try {
 				Assert.AreEqual(expected, actual, message);
 			} catch(Exception e) {
@@ -59,7 +51,34 @@ namespace DerRobert.FunctionalSharpTests.Core {
 			}
 		}
 
-		protected void testMethod(string? info = null) {
+		public void assertIsNull<T>(T expected, string? message) {
+			try {
+				Assert.IsNull(expected, message);
+			} catch(Exception e) {
+				testLog($"{e.GetType()}: {e.Message}\nStackTrace:\n{e.StackTrace}");
+				throw;
+			}
+		}
+
+		public void assertNotEquals<T, U>(T expected, U actual, string? message) {
+			try {
+				Assert.AreNotEqual(expected, actual, message);
+			} catch(Exception e) {
+				testLog($"{e.GetType()}: {e.Message}\nStackTrace:\n{e.StackTrace}");
+				throw;
+			}
+		}
+
+		public void assertNotNull<T>(T expected, string? message) {
+			try {
+				Assert.IsNotNull(expected, message);
+			} catch(Exception e) {
+				testLog($"{e.GetType()}: {e.Message}\nStackTrace:\n{e.StackTrace}");
+				throw;
+			}
+		}
+
+		public void testMethod(string? info = null) {
 			string? caller = new StackTrace()?.GetFrame(1)?.GetMethod()?.Name;
 			if(info == null) {
 				testLog($"[{caller}]");
@@ -68,7 +87,7 @@ namespace DerRobert.FunctionalSharpTests.Core {
 			}
 		}
 
-		protected void testLog(string? log = null) {
+		public void testLog(string? log = null) {
 			if(log != null) {
 				UTF8Encoding unicode = new UTF8Encoding(true);
 				byte[] info = unicode.GetBytes($"{DateTime.Now},{getTestStep()}: {log}\n");
@@ -76,13 +95,7 @@ namespace DerRobert.FunctionalSharpTests.Core {
 			}
 		}
 
-		//
-		//	PRIVATE METHODS:
-		//
-
-		private string getPath() {
-			return $"{GetCurrentDirectory()}\\[TESTS]";
-		}
+		private string getPath() => $"{GetCurrentDirectory()}\\[TESTS]";
 
 		private string getTestStep() {
 			testStep += 10001;
