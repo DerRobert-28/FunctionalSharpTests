@@ -7,7 +7,7 @@
 
 
 	[TestClass]
-	public class Tuple3Tests: TestClass {
+	public class Tuple3Tests: ITestClass {
 	
 		private readonly World tupleWorld;
 
