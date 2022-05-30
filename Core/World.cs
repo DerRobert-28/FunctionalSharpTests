@@ -2,7 +2,6 @@
 
 	using DerRobert.FunctionalSharp.Interfaces;
 	using System;
-	using System.Collections.Generic;
 
 
 	public class World {
