@@ -6,7 +6,7 @@ namespace DerRobert.FunctionalSharpTests.Tests.Exceptions {
 
 
 	[TestClass]
-	public class MappingExceptionTests: Exceptions {
+	public class MappingExceptionTests: TestClass {
 
 		private const string reason = "Test Automation: MappingException";
 		private readonly World mappingWorld;

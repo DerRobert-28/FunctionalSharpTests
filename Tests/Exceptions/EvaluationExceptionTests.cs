@@ -6,7 +6,7 @@ namespace DerRobert.FunctionalSharpTests.Tests.Exceptions {
 	
 
 	[TestClass]
-	public class EvaluationExceptionTests: Exceptions {
+	public class EvaluationExceptionTests: TestClass {
 	
 		private const string reason = "Test Automation: EvaluationException";
 		private readonly World evaluationWorld;
