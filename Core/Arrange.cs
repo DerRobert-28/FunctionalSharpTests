@@ -3,9 +3,9 @@
 	using System;
 
 
-	public class Arrange: TestClass {
+	public class Arrange: ITestClass {
 		
-		private TestClass testClass;
+		private ITestClass testClass;
 		private readonly World world;
 
 		//
@@ -14,7 +14,7 @@
 
 		public static Arrange theWorld(World world) => new Arrange(world);
 
-		public Arrange withLogging(TestClass testClass) {
+		public Arrange withLogging(ITestClass testClass) {
 			testClass.testMethod($"{testClass}");
 			this.testClass = testClass;
 			return this;

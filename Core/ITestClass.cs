@@ -9,7 +9,7 @@ namespace DerRobert.FunctionalSharpTests.Core {
 	using static System.IO.Directory;
 	
 
-	public abstract class TestClass {
+	public abstract class ITestClass {
 
 		private static bool openLastLogFileAfterTesting = false;
 		private static bool openContainingFolderAfterTesting = true;

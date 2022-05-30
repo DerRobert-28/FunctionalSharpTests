@@ -3,9 +3,9 @@
 	using System;
 
 
-	public class Expectation: TestClass {
+	public class Expectation: ITestClass {
 
-		private TestClass testClass;
+		private ITestClass testClass;
 		private readonly World world;
 
 		public Expectation and => this;
@@ -17,7 +17,7 @@
 
 		public static Expectation forWorld(World world) => new Expectation(world);
 
-		public Expectation withLogging(TestClass testClass) {
+		public Expectation withLogging(ITestClass testClass) {
 			testClass.testMethod($"{testClass}");
 			this.testClass = testClass;
 			return this;

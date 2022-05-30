@@ -10,7 +10,7 @@
 
 		public static Expect forWorld(World world) => new Expect(world);
 
-		public Expect withLogging(TestClass testClass) {
+		public Expect withLogging(ITestClass testClass) {
 			That.withLogging(testClass);
 			return this;
 		}

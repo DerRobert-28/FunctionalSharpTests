@@ -3,9 +3,9 @@
 	using System;
 
 
-	public class Act: TestClass {
+	public class Act: ITestClass {
 		
-		private TestClass testClass;
+		private ITestClass testClass;
 		private readonly World world;
 
 		//
@@ -14,7 +14,7 @@
 
 		public static Act inWorld(World world) => new Act(world);
 
-		public Act withLogging(TestClass testClass) {
+		public Act withLogging(ITestClass testClass) {
 			testClass.testMethod($"{testClass}");
 			this.testClass = testClass;
 			return this;
