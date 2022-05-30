@@ -1,5 +1,5 @@
 ﻿namespace DerRobert.FunctionalSharpTests.Core {
-	using DerRobert.FunctionalSharp.Interfaces;
+
 	using System;
 
 
