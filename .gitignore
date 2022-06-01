@@ -1,12 +1,5 @@
-<<<<<<< Updated upstream
-*
-!.gitignore
-!*.cs
-!*.sln
-=======
 **/bin/**
 **/obj/**
 *.dll
 *.exe
 */FunctionalSharpTests/**
->>>>>>> Stashed changes

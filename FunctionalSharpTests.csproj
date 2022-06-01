@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
+
+    <RootNamespace>DerRobert.FunctionalSharpTests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
