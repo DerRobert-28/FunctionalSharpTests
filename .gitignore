@@ -1,9 +1,5 @@
-!.gitignore
-*.cache
+**/bin/**
+**/obj/**
 *.dll
 *.exe
-*.json
-*.pdb
-*.txt
-bin/*
-obj/*
+*/FunctionalSharpTests/**
